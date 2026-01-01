@@ -3,12 +3,12 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
 const blockTabs = [
-  { id: "4.1", label: "Care Block Credits", icon: Heart },
-  { id: "4.2", label: "School Year License Credits", icon: GraduationCap },
-  { id: "4.3", label: "School FOMO Block Credits", icon: Trophy },
-  { id: "4.4", label: "SkillLab AR/VR Block Credits", icon: Glasses },
-  { id: "4.5", label: "DroneShow / Media Block Credits", icon: Plane },
-  { id: "4.6", label: "Collectible FOMO Block Credits", icon: Sparkles },
+  { id: "4.1", label: "Care Block", icon: Heart },
+  { id: "4.2", label: "School License", icon: GraduationCap },
+  { id: "4.3", label: "FOMO Block", icon: Trophy },
+  { id: "4.4", label: "AR/VR Block", icon: Glasses },
+  { id: "4.5", label: "Media Block", icon: Plane },
+  { id: "4.6", label: "Collectibles", icon: Sparkles },
 ];
 
 const Navbar = () => {
@@ -16,33 +16,7 @@ const Navbar = () => {
 
   return (
     <div className="sticky top-0 z-50">
-      {/* Top Tab Bar - 6 Block Tabs */}
-      <div className="bg-background/80 backdrop-blur-md border-b border-gold/20">
-        <div className="max-w-[1800px] mx-auto flex items-center justify-center">
-          <div className="flex items-center">
-            {blockTabs.map((tab) => {
-              const IconComponent = tab.icon;
-              return (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`relative flex items-center gap-2 px-6 py-3 transition-all duration-300 font-medium text-sm border-b-2 whitespace-nowrap ${
-                    activeTab === tab.id
-                      ? "text-gold border-gold bg-gold/5"
-                      : "text-muted-foreground border-transparent hover:text-foreground hover:border-gold/30 hover:bg-muted/20"
-                  }`}
-                >
-                  <IconComponent className="w-4 h-4" />
-                  <span className="hidden lg:inline">Tab {tab.id}</span>
-                  <span className="lg:hidden">{tab.id}</span>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-
-      {/* Main Navbar */}
+      {/* Main Navbar with Logo */}
       <nav className="glass-card border-b border-gold/20 px-6 py-3">
         <div className="flex items-center justify-between max-w-[1800px] mx-auto">
           {/* Logo */}
@@ -81,6 +55,31 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
+
+      {/* Tab Bar - 6 Block Tabs */}
+      <div className="bg-background/60 backdrop-blur-md border-b border-gold/20">
+        <div className="max-w-[1800px] mx-auto flex items-center justify-center">
+          <div className="flex items-center">
+            {blockTabs.map((tab) => {
+              const IconComponent = tab.icon;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`relative flex items-center gap-2 px-5 py-3 transition-all duration-300 font-medium text-sm border-b-2 whitespace-nowrap ${
+                    activeTab === tab.id
+                      ? "text-gold border-gold bg-gold/5"
+                      : "text-muted-foreground border-transparent hover:text-foreground hover:border-gold/30 hover:bg-muted/20"
+                  }`}
+                >
+                  <IconComponent className="w-4 h-4" />
+                  {tab.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
