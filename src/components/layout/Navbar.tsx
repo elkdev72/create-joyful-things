@@ -14,8 +14,8 @@ const Navbar = () => {
             <span className="font-display font-bold text-xl gold-text">NeoPay</span>
           </div>
 
-          {/* Main Nav */}
-          <div className="hidden md:flex items-center gap-1">
+          {/* Main Nav - Clickable Tabs */}
+          <div className="hidden md:flex items-center">
             <NavItem label="Overview" icon="grid" />
             <NavItem label="Escrow & Blocks" icon="blocks" active />
             <NavItem label="Billing" icon="receipt" />
@@ -57,10 +57,10 @@ const Navbar = () => {
 const NavItem = ({ label, icon, active = false }: { label: string; icon: string; active?: boolean }) => {
   return (
     <button
-      className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300 font-medium text-sm ${
+      className={`relative flex items-center gap-2 px-5 py-3 transition-all duration-300 font-medium text-sm border-b-2 ${
         active
-          ? "bg-gold/20 text-gold border border-gold/40"
-          : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+          ? "text-gold border-gold bg-gold/5"
+          : "text-muted-foreground border-transparent hover:text-foreground hover:border-gold/30 hover:bg-muted/20"
       }`}
     >
       {icon === "grid" && <span className="text-base">⊞</span>}
